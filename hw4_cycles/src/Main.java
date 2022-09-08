@@ -22,9 +22,8 @@ public class Main {
         int firstFridayOfAMonth = 3;
         final int DAYS_IN_MONTH = 31;
 
-        for (int i = 1; i <= DAYS_IN_MONTH; i++) {
-            if (i % 7 == firstFridayOfAMonth)
-                System.out.println("Сегодня пятница, " + i + "-е число. Необходимо подготовить отчет.");
+        for (int i = firstFridayOfAMonth; i <= DAYS_IN_MONTH; i += 7) {
+             System.out.println("Сегодня пятница, " + i + "-е число. Необходимо подготовить отчет.");
         }
     }
 
