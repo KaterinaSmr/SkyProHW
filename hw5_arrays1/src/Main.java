@@ -8,7 +8,10 @@ import java.util.stream.IntStream;
 public class Main {
     public static void main(String[] args) {
         //task1
-        int[] array1 = new int[] {1, 2, 3};
+        int[] array1 = new int[3];
+        for (int i = 0; i < array1.length ; i++) {
+            array1[i] = i+1;
+        }
         double[] array2 = {1.57, 7.654, 9.986};
         int[] array3 = new int[5];
         for (int i = 0; i < 5; i++) {
