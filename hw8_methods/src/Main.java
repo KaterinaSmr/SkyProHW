@@ -3,7 +3,9 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
         //task1
-        checkLeapYear(2021);
+        checkLeapYear(2000);
+        checkLeapYear(1900);
+        checkLeapYear(2020);
 
         //task2
         defineAppVersion(1, 2020);
@@ -14,14 +16,11 @@ public class Main {
     }
 
     private static void checkLeapYear(int year){
-        if (year % 400 == 0)
+        if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)){
             System.out.println(year + " - високосный год");
-        else if (year % 100 == 0)
+        } else {
             System.out.println(year + " - не високосный год");
-        else if (year % 4 == 0)
-            System.out.println(year + " - високосный год");
-        else
-            System.out.println(year + " - не високосный год");
+        }
     }
 
     private static void defineAppVersion(int clientOS, int clientDeviceYear){
