@@ -8,6 +8,7 @@ public class Main {
         System.out.println(Arrays.toString(arr));
         task1(arr);
         task2(arr);
+        task2(new int[]{});
         task3(arr);
         task4();
     }
@@ -23,13 +24,16 @@ public class Main {
 
     private static void task2(int[] arr){
         System.out.println("Минимальная сумма трат за день составила " +
-                Arrays.stream(arr).min().getAsInt() + " рублей. Максимальная сумма трат за день составила " +
-                Arrays.stream(arr).max().getAsInt() + " рублей");
+                Arrays.stream(arr).min().orElse(0) + " рублей. Максимальная сумма трат за день составила " +
+                Arrays.stream(arr).max().orElse(0) + " рублей");
     }
 
     private static void task3(int[] arr){
-        System.out.println("Средняя сумма трат за месяц составила "+ (float) Arrays.stream(arr).sum() / 30 +" рублей");
-        System.out.println("Средняя сумма трат за месяц составила "+ Arrays.stream(arr).average().getAsDouble() +" рублей");
+        if (arr.length > 0) {
+            System.out.println("Средняя сумма трат за месяц составила " + (float) Arrays.stream(arr).sum() / arr.length + " рублей");
+            System.out.println("Средняя сумма трат за месяц составила " + Arrays.stream(arr).average().getAsDouble() + " рублей");
+        } else
+            System.out.println("Нет данных для расчета");
     }
 
     private static void task4(){
