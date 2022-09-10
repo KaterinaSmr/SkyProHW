@@ -9,16 +9,16 @@ public class Main {
         employeeBook.printAllEmployeesInfo();
 
 //        b.Посчитать сумму затрат на зарплаты в месяц.
-        employeeBook.calcTotalSalaryAMonth();
+        System.out.println("Сумма затрат на зарплаты в месяц: " + employeeBook.calcTotalSalaryAMonth());
 
 //        c. Найти сотрудника с минимальной зарплатой.
-        employeeBook.getMinSalaryEmployee();
+        System.out.println("Сотрудник с минимальной зарплатой: " + employeeBook.getMinSalaryEmployee());
 
 //        d. Найти сотрудника с максимальной зарплатой.
-        employeeBook.getMaxSalaryEmployee();
+        System.out.println("Сотрудник с максимальной зарплатой: " + employeeBook.getMaxSalaryEmployee());
 
 //        e. Подсчитать среднее значение зарплат (можно использовать для этого метод из пункта b).
-        employeeBook.calcAverageSalary();
+        System.out.println("Средняя зарплата: " + employeeBook.calcAverageSalary());
 
 //        f. Получить Ф. И. О. всех сотрудников (вывести в консоль).
         employeeBook.printEmpNames();
@@ -31,16 +31,21 @@ public class Main {
 
 //        2. Получить в качестве параметра номер отдела (1–5) и найти (всего 6 методов):
 //        a. Сотрудника с минимальной зарплатой.
-        employeeBook.getMinSalaryEmployee(3);
+        int department = 3;
+        System.out.println("Сотрудник с минимальной зарплатой в отделе " + department + ": "
+                + employeeBook.getMinSalaryEmployee(department));
 
 //        b. Сотрудника с максимальной зарплатой.
-        employeeBook.getMaxSalaryEmployee(3);
+        System.out.println("Сотрудник с максимальной зарплатой в отделе " + department + ": "
+                + employeeBook.getMaxSalaryEmployee(department));
 
 //        c. Сумму затрат на зарплату по отделу.
-        employeeBook.calcTotalSalaryAMonth(3);
+        System.out.println("Сумма затрат на зарплаты в месяц в отделе " + department + ": "
+                + employeeBook.calcTotalSalaryAMonth(department));
 
 //        d. Среднюю зарплату по отделу (учесть, что количество людей в отделе отличается от employees.length).
-        employeeBook.calcAverageSalary(3);
+        System.out.println("Средняя зарплата в отделе " + department + ": "
+                + employeeBook.calcAverageSalary(department));
 
 //        e. Проиндексировать зарплату всех сотрудников отдела на процент, который приходит в качестве параметра.
         employeeBook.raiseSalary(10, 3);
@@ -52,10 +57,10 @@ public class Main {
 //        a. Всех сотрудников с зарплатой меньше числа (вывести id, Ф. И. О. и зарплатой в консоль).
         int salary = 20000;
         System.out.println("Сотрудники с зарплатой меньше " + salary + ": ");
-        employeeBook.getEmployessSalaryBelow(salary);
+        employeeBook.printEmployessSalaryBelow(salary);
 //        b. Всех сотрудников с зарплатой больше (или равно) числа (вывести id, Ф. И. О. и зарплатой в консоль).
         System.out.println("Сотрудники с зарплатой больше или равно " + salary + ": ");
-        employeeBook.getEmployeesSalaryAbove(salary);
+        employeeBook.printEmployeesSalaryAbove(salary);
 
 //======= very complex =========
 

@@ -30,7 +30,6 @@ public final class EmployeeBook {
                 sum += employee.getSalary();
             }
         }
-        System.out.println("Сумма затрат на зарплаты в месяц: " + sum);
         return sum;
     }
 
@@ -41,7 +40,6 @@ public final class EmployeeBook {
                 result = employees[i];
             }
         }
-        System.out.println("Сотрудник с минимальной зарплатой: " + result);
         return result;
     }
     public Employee getMaxSalaryEmployee(){
@@ -51,13 +49,10 @@ public final class EmployeeBook {
                 result = employees[i];
             }
         }
-        System.out.println("Сотрудник с максимальной зарплатой: " + result);
         return result;
     }
     public double calcAverageSalary(){
-        double avg = (double) calcTotalSalaryAMonth() / countEmployees();
-        System.out.println("Средняя зарплата: " + avg);
-        return  avg;
+        return  (double) calcTotalSalaryAMonth() / countEmployees();
     }
 
     private int countEmployees(){
@@ -80,37 +75,29 @@ public final class EmployeeBook {
     }
 
     public void raiseSalary(int increaseRate, int department){
-        Arrays.stream(employees).filter(e -> e != null && e.getDepartment() == department)
+        Arrays.stream(employees).filter(Objects::nonNull).filter(e -> e.getDepartment() == department)
                 .forEach(e -> e.setSalary((int) (e.getSalary() * ((float)increaseRate/100 + 1.0f))));
     }
 
     public Employee getMinSalaryEmployee(int department) {
-        Employee result = Arrays.stream(employees).filter(e -> e != null && e.getDepartment() == department)
+        return Arrays.stream(employees).filter(e -> e != null && e.getDepartment() == department)
                 .min(Comparator.comparingInt(Employee::getSalary)).orElse(null);
-        System.out.println("Сотрудник с минимальной зарплатой в отделе " + department + ": " + result);
-        return result;
     }
 
     public Employee getMaxSalaryEmployee(int department) {
-        Employee result = Arrays.stream(employees).filter(e -> e != null && e.getDepartment() == department)
+        return Arrays.stream(employees).filter(e -> e != null && e.getDepartment() == department)
                 .max(Comparator.comparingInt(Employee::getSalary)).orElse(null);
-        System.out.println("Сотрудник с максимальной зарплатой в отделе " + department + ": " + result);
-        return result;
     }
 
     public int calcTotalSalaryAMonth(int department){
-        int sum = Arrays.stream(employees).filter(e -> e != null && e.getDepartment() == department)
+        return Arrays.stream(employees).filter(e -> e != null && e.getDepartment() == department)
                 .mapToInt(Employee::getSalary).sum();
-        System.out.println("Сумма затрат на зарплаты в месяц в отделе " + department + ": " + sum);
-        return sum;
     }
 
     public double calcAverageSalary(int department){
         int count = countEmployees(department);
         if (count != 0){
-            double avg = (double) calcTotalSalaryAMonth(department)/count;
-            System.out.println("Средняя зарплата в отделе " + department + ": " + avg);
-            return avg;
+            return (double) calcTotalSalaryAMonth(department)/count;
         } else {
             System.out.println("Нет сотрудников в отделе " + department);
         }
@@ -129,12 +116,12 @@ public final class EmployeeBook {
         }
     }
 
-    public void getEmployessSalaryBelow(int salary){
+    public void printEmployessSalaryBelow(int salary){
         Arrays.stream(employees).filter(e -> e!=null && e.getSalary() < salary)
                 .forEach(e-> System.out.println(e.printInfo()));
     }
 
-    public void getEmployeesSalaryAbove(int salary){
+    public void printEmployeesSalaryAbove(int salary){
         Arrays.stream(employees).filter(e -> e!=null && e.getSalary() >= salary)
                 .forEach(e-> System.out.println(e.printInfo()));
     }
@@ -146,7 +133,6 @@ public final class EmployeeBook {
         for (int i = 0; i < employees.length; i++){
             if (employees[i] == null){
                 employees[i] = new Employee(name, department, salary);
-                isAdded = true;
                 break;
             }
         }

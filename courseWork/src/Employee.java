@@ -9,8 +9,9 @@ public class Employee{
     private static int EMPLOYEE_COUNT;
 
     public Employee(String name, int department, int salary) {
-        if (department < 1 || department > 5)
+        if (department < 1 || department > 5) {
             throw new IllegalArgumentException("Введен некорректный номер отдела");
+        }
         this.id = ++EMPLOYEE_COUNT;
         this.name = name;
         this.department = department;
@@ -33,7 +34,7 @@ public class Employee{
         return salary;
     }
 
-    public static int getEmployeeCount() {
+    private static int getEmployeeCount() {
         return EMPLOYEE_COUNT;
     }
 
