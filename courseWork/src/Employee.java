@@ -34,10 +34,6 @@ public class Employee{
         return salary;
     }
 
-    private static int getEmployeeCount() {
-        return EMPLOYEE_COUNT;
-    }
-
     public void setDepartment(int department) {
         this.department = department;
     }
